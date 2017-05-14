@@ -29,13 +29,6 @@ const std::vector<BoardPosition> Board::FindLetter(const char letter) const
     return positions;
 }
 
-const char Board::GetLetter(const BoardPosition& pos) const
-{
-    uint32_t row = pos.GetRow();
-    uint32_t column = pos.GetColumn();
-    return m_Data[row][column];
-}
-
 const std::vector<BoardPosition> Board::FindNeighbour(const BoardPosition pos, const char letter) const
 {
     std::vector<BoardPosition> positions;
@@ -50,4 +43,11 @@ const std::vector<BoardPosition> Board::FindNeighbour(const BoardPosition pos, c
     }
 
     return positions;
+}
+
+const char Board::GetLetter(const BoardPosition& pos) const
+{
+    uint32_t row = pos.GetRow();
+    uint32_t column = pos.GetColumn();
+    return m_Data[row][column];
 }
