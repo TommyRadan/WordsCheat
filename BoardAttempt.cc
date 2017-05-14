@@ -1,11 +1,9 @@
 #include "BoardAttempt.hh"
 #include <cstdint>
-#include <cstring>
 
-BoardAttempt::BoardAttempt(void)
-{
-    memset(m_isVisited, 0x00, 16 * sizeof(bool));
-}
+BoardAttempt::BoardAttempt(void) :
+    m_isVisited { 0 }
+{}
 
 void BoardAttempt::SetVisited(const BoardPosition& pos)
 {
