@@ -2,9 +2,8 @@
 
 #include "BoardPosition.hh"
 
-class BoardAttempt
+struct BoardAttempt
 {
-public:
     BoardAttempt(void);
 
     void SetVisited(const BoardPosition& pos);
