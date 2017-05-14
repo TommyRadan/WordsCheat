@@ -6,8 +6,8 @@ static inline int32_t abs(const int32_t val)
 }
 
 BoardPosition::BoardPosition(const uint32_t row, const uint32_t column) :
-    m_row {row},
-    m_column {column}
+    m_row { row },
+    m_column { column }
 { }
 
 bool BoardPosition::operator>>(const BoardPosition& position) const

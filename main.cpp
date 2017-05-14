@@ -66,7 +66,7 @@ int main(int argc, char** argv)
         std::sort(matchedWords.begin(), matchedWords.end(), function);
 
         // Printing out sorted matched words
-        for(auto& word : matchedWords) {
+        for (auto& word : matchedWords) {
             std::cout << word << std::endl;
         }
     }

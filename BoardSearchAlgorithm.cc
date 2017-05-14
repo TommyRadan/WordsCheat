@@ -3,11 +3,14 @@
 #include "BoardPosition.hh"
 
 // Prototype
-static const bool RecursiveSearch(const Board& board, const std::string& word, const BoardPosition startPos, const BoardAttempt attempt);
+static const bool RecursiveSearch(const Board& board,
+                                  const std::string& word,
+                                  const BoardPosition startPos,
+                                  const BoardAttempt attempt);
 
 const bool SearchForWord(const Board& board, const std::string& word)
 {
-    if(word.size() < 5) {
+    if (word.size() < 5) {
         return false;
     }
 
@@ -29,7 +32,10 @@ const bool SearchForWord(const Board& board, const std::string& word)
     return false;
 }
 
-static const bool RecursiveSearch(const Board& board, const std::string& word, const BoardPosition startPos, const BoardAttempt attempt)
+static const bool RecursiveSearch(const Board& board,
+                                  const std::string& word,
+                                  const BoardPosition startPos,
+                                  const BoardAttempt attempt)
 {
     if (word.empty())
     {
@@ -42,14 +48,14 @@ static const bool RecursiveSearch(const Board& board, const std::string& word, c
     std::vector<BoardPosition> positions;
     positions = board.FindNeighbour(startPos, word[0]);
 
-    for(auto pos : positions)
+    for (auto pos : positions)
     {
-        if(!attempt.GetVisited(pos))
+        if (!attempt.GetVisited(pos))
         {
             // TODO: A lot of copying is done here, need to optimize
             BoardAttempt newAttempt = attempt;
             newAttempt.SetVisited(pos);
-            if(RecursiveSearch(board, nextWord, pos, newAttempt))
+            if (RecursiveSearch(board, nextWord, pos, newAttempt))
             {
                 return true;
             }

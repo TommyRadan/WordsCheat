@@ -6,7 +6,7 @@ const uint32_t COLUMN_NUM = 4u;
 
 void Board::Input(const std::string& input)
 {
-    if(input.size() != BOARD_SIZE) {
+    if (input.size() != BOARD_SIZE) {
         throw std::length_error("Input string is of wrong size");
     }
 
