@@ -11,12 +11,6 @@ const bool SearchForWord(const Board& board, const std::string& word)
         return false;
     }
 
-    for(auto& c : word) {
-        if(!board.ContainsLetter(c)) {
-            return false;
-        }
-    }
-
     std::vector<BoardPosition> positions;
     positions = board.FindLetter(word[0]);
 

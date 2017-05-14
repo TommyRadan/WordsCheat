@@ -9,19 +9,6 @@ void Board::Input(const std::string& input)
     memcpy(m_Data, input.c_str(), BOARD_SIZE * sizeof(char));
 }
 
-const bool Board::ContainsLetter(const char letter) const
-{
-    for (uint32_t i = 0u; i < ROW_NUM; ++i) {
-        for (uint32_t j = 0u; j < COLUMN_NUM; ++j) {
-            BoardPosition pos(i, j);
-            if (this->GetLetter(pos) == letter) {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
 const std::vector<BoardPosition> Board::FindLetter(const char letter) const
 {
     std::vector<BoardPosition> positions;

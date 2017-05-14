@@ -19,7 +19,6 @@ struct Board
 
     const std::vector<BoardPosition> FindLetter(const char letter) const;
     const std::vector<BoardPosition> FindNeighbour(const BoardPosition pos, const char letter) const;
-    const bool ContainsLetter(const char letter) const;
 
 private:
     const char GetLetter(const BoardPosition& pos) const;
