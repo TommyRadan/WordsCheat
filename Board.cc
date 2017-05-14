@@ -1,5 +1,9 @@
 #include "Board.hh"
 
+const uint32_t BOARD_SIZE = 16u;
+const uint32_t ROW_NUM = 4u;
+const uint32_t COLUMN_NUM = 4u;
+
 void Board::Input(const std::string& input)
 {
     if(input.size() != BOARD_SIZE) {
