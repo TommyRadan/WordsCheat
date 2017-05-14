@@ -48,7 +48,7 @@ int main(int argc, char** argv)
             board.Input(boardString);
         } catch (const std::exception& e) {
             std::cout << "Error: " << e.what() << std::endl;
-            continue;
+            return EXIT_FAILURE;
         }
 
         // Searching every word
