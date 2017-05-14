@@ -9,8 +9,6 @@
 
 struct Board
 {
-    Board() = default;
-
     void Input(const std::string& input);
 
     const std::vector<BoardPosition> FindLetter(const char letter) const;
