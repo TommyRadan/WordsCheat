@@ -1,18 +1,29 @@
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 3.2)
 project(WordsCheat)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES
-        main.cpp
-        Board.hh
-        Board.cc
-        BoardAttempt.hh
-        BoardAttempt.cc
-        BoardPosition.hh
-        BoardPosition.cc
-        FileLoading.hh
-        BoardSearchAlgorithm.hh
-        BoardSearchAlgorithm.cc)
+###################################################################
+# Application Main Build
+###################################################################
 
-add_executable(WordsCheat ${SOURCE_FILES})
+include_directories(Include/)
+
+set(INCLUDE_FILES
+        Include/Board.hpp
+        Include/BoardAttempt.hpp
+        Include/BoardPosition.hpp
+        Include/BoardSearchAlgorithm.hpp
+        Include/FileLoading.hpp)
+
+set(SOURCE_FILES
+        Source/Board.cpp
+        Source/BoardAttempt.cpp
+        Source/BoardPosition.cpp
+        Source/BoardSearchAlgorithm.cpp
+        Source/FileLoading.cpp)
+
+add_executable(WordsCheat
+        ${SOURCE_FILES}
+        ${INCLUDE_FILES}
+        Source/EntryPoint.cpp)
