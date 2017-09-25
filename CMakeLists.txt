@@ -27,3 +27,32 @@ add_executable(WordsCheat
         ${SOURCE_FILES}
         ${INCLUDE_FILES}
         Source/EntryPoint.cpp)
+
+###################################################################
+# Application Tests
+###################################################################
+
+include(ExternalProject)
+ExternalProject_Add(gtest
+        GIT_REPOSITORY https://github.com/google/googletest.git
+        GIT_TAG master
+        PREFIX ${CMAKE_CURRENT_BINARY_DIR}/gtest
+        TIMEOUT 10
+        INSTALL_COMMAND "")
+
+ExternalProject_Get_Property(gtest
+        source_dir
+        binary_dir)
+
+add_executable(RunUnitTest
+        Test/BoardTest.cpp
+        ${SOURCE_FILES}
+        ${INCLUDE_FILES})
+
+find_package (Threads)
+add_dependencies(RunUnitTest gtest)
+include_directories(${source_dir}/googletest/include)
+target_link_libraries(RunUnitTest
+        ${binary_dir}/googlemock/gtest/libgtest.a
+        ${binary_dir}/googlemock/gtest/libgtest_main.a
+        ${CMAKE_THREAD_LIBS_INIT})
