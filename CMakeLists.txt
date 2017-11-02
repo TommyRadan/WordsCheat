@@ -1,3 +1,27 @@
+#
+# MIT License
+#
+# Copyright (c) 2017 Tomislav Radanovic
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+#
+
 cmake_minimum_required(VERSION 3.2)
 project(WordsCheat)
 
@@ -27,32 +51,3 @@ add_executable(WordsCheat
         ${SOURCE_FILES}
         ${INCLUDE_FILES}
         Source/EntryPoint.cpp)
-
-###################################################################
-# Application Tests
-###################################################################
-
-include(ExternalProject)
-ExternalProject_Add(gtest
-        GIT_REPOSITORY https://github.com/google/googletest.git
-        GIT_TAG master
-        PREFIX ${CMAKE_CURRENT_BINARY_DIR}/gtest
-        TIMEOUT 10
-        INSTALL_COMMAND "")
-
-ExternalProject_Get_Property(gtest
-        source_dir
-        binary_dir)
-
-add_executable(RunUnitTest
-        Test/BoardTest.cpp
-        ${SOURCE_FILES}
-        ${INCLUDE_FILES})
-
-find_package (Threads)
-add_dependencies(RunUnitTest gtest)
-include_directories(${source_dir}/googletest/include)
-target_link_libraries(RunUnitTest
-        ${binary_dir}/googlemock/gtest/libgtest.a
-        ${binary_dir}/googlemock/gtest/libgtest_main.a
-        ${CMAKE_THREAD_LIBS_INIT})
